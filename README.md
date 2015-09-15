@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Nutch 1.10 on Multinode Hadoop Cluster
 This repository contains the nutch crawler and hadoop cluster used in srmse.
 You can refer to configs made in nutch as well as hadoop.
@@ -44,3 +45,7 @@ Please send me an email.
 **Free Software, Hell Yeah!**
 
 
+=======
+# srmse-crawler
+This is crawler used to crawl webpages in srmse
+>>>>>>> 84093930a9676617125569d4029277e1475f08d0
