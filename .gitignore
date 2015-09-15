@@ -18,7 +18,6 @@
 /nutch2/ivy/*
 /nutch2/docs/*
 /nutch2/lib/*
-/nutch2/runtime/*
 /nutch2/src/*
 /nutch2/runtime/local/*
 /nutch2/runtime/deploy/apache-nutch-1.10.job
