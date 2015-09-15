@@ -1,0 +1,212 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+  <property>
+    <name>http.agent.name</name>
+    <value>srmse</value>
+  </property>
+  
+  <property>
+    <name>plugin.includes</name>
+    <value>protocol-(http|httpclient)|urlfilter-regex|index-(basic|more)|query-(basic|site|url|lang)|indexer-elastic|nutch-extensionpoints|parse-(text|html|msexcel|msword|mspowerpoint|pdf)|summary-basic|scoring-opic|urlnormalizer-(pass|regex|basic)|parse-(html|tika|metatags)|index-(basic|anchor|more|metadata)</value>
+  </property>
+  <property>
+    <name>elastic.host</name>
+    <value>192.168.101.5</value>
+  </property>
+   <property>
+    <name>elastic.port</name>
+    <value>9300</value>
+  </property>
+
+  <property>
+    <name>elastic.cluster</name>
+    <value>coldblood</value>
+  </property>
+ 
+  <property>
+    <name>elastic.index</name>
+    <value>nutch</value>
+  </property>
+ 
+  <property>
+    <name>parser.character.encoding.default</name>
+    <value>utf-8</value>
+  </property>
+ 
+
+ <property>
+  <name>db.ignore.external.links</name>
+  <value>false</value>
+  <description>If true, outlinks leading from a page to external hosts
+  will be ignored. This is an effective way to limit the crawl to include
+  only initially injected hosts, without creating complex URLFilters.
+  </description>
+</property>
+<property>
+  <name>db.ignore.internal.links</name>
+  <value>false</value>
+  <description>If true, when adding new links to a page, links from
+  the same host are ignored.  This is an effective way to limit the
+  size of the link database, keeping only the highest quality
+  links.
+  </description>
+</property>
+<property>
+    <name>db.url.filters</name>
+    <value>true</value>
+    <description>Filter urls when updating crawldb</description>
+</property>
+<property>
+  <name>fetcher.threads.fetch</name>
+  <value>1000</value>
+  <description>The number of FetcherThreads the fetcher should use.
+  This is also determines the maximum number of requests that are
+  made at once (each FetcherThread handles one connection). The total
+  number of threads running in distributed mode will be the number of
+  fetcher threads * number of nodes as fetcher has one map task per node.
+  </description>
+</property>
+<property>
+  <name>fetcher.threads.per.queue</name>
+  <value>1000</value>
+  <description>This number is the maximum number of threads that
+    should be allowed to access a queue at one time. Setting it to 
+    a value > 1 will cause the Crawl-Delay value from robots.txt to
+    be ignored and the value of fetcher.server.min.delay to be used
+    as a delay between successive requests to the same server instead 
+    of fetcher.server.delay.
+   </description>
+</property>
+<property>
+  <name>fetcher.verbose</name>
+  <value>true</value>
+  <description>If true, fetcher will log more verbosely.</description>
+</property>
+<property>
+  <name>parse.filter.urls</name>
+  <value>true</value>
+  <description>Whether the parser will filter URLs (with the configured URL filters).</description>
+</property>
+<property>
+  <name>http.accept.language</name>
+  <value>en-us,en-gb,en;</value>
+  <description>Value of the "Accept-Language" request header field.
+  This allows selecting non-English language as default one to retrieve.
+  It is a useful setting for search engines build for certain national group.
+  </description>
+</property>
+<property>
+  <name>urlfilter.domain.file</name>
+  <value>domain-urlfilter.txt</value>
+  <description>Name of file on CLASSPATH containing either top level domains or
+  hostnames used by urlfilter-domain (DomainURLFilter) plugin.</description>
+</property>
+<property>
+  <name>urlfilter.regex.file</name>
+  <value>regex-urlfilter.txt</value>
+  <description>Name of file on CLASSPATH containing regular expressions
+  used by urlfilter-regex (RegexURLFilter) plugin.</description>
+</property>
+<property>
+  <name>mimetype.filter.file</name>
+  <value>mimetype-filter.txt</value>
+  <description>
+    The configuration file for the mimetype-filter plugin. This file contains
+    the rules used to allow or deny the indexing of certain documents.
+  </description>
+</property>
+<property> 
+  <name>elastic.max.bulk.docs</name>
+  <value>25000</value> 
+  <description>Maximum size of the bulk in number of documents.</description>
+</property>
+
+<property> 
+  <name>elastic.max.bulk.size</name>
+  <value>2500500000</value> 
+  <description>Maximum size of the bulk in bytes.</description>
+</property>
+<property>
+  <name>db.max.outlinks.per.page</name>
+  <value>-1</value>
+  <description>The maximum number of outlinks that we'll process for a page.
+  If this value is nonnegative (>=0), at most db.max.outlinks.per.page outlinks
+  will be processed for a page; otherwise, all outlinks will be processed.
+  </description>
+</property>
+<property>
+  <name>http.content.limit</name>
+  <value>100000</value>
+  <description>100kb The length limit for downloaded content using the http://
+  protocol, in bytes. If this value is nonnegative (>=0), content longer
+  than it will be truncated; otherwise, no truncation at all. Do not
+  confuse this setting with the file.content.limit setting.
+  </description>
+</property>
+<property>
+  <name>file.content.limit</name>
+  <value>20971520</value>
+  <description>20mb The length limit for downloaded content using the file://
+  protocol, in bytes. If this value is nonnegative (>=0), content longer
+  than it will be truncated; otherwise, no truncation at all. Do not
+  confuse this setting with the http.content.limit setting.
+  </description>
+</property>
+<property>
+  <name>ftp.content.limit</name>
+  <value>20971520</value> 
+  <description>20mb The length limit for downloaded content, in bytes.
+  If this value is nonnegative (>=0), content longer than it will be truncated;
+  otherwise, no truncation at all.
+  Caution: classical ftp RFCs never defines partial transfer and, in fact,
+  some ftp servers out there do not handle client side forced close-down very
+  well. Our implementation tries its best to handle such situations smoothly.
+  </description>
+</property>
+<property>
+  <name>fetcher.server.delay</name>
+  <value>1.0</value>
+  <description>The number of seconds the fetcher will delay between 
+   successive requests to the same server. Note that this might get
+   overriden by a Crawl-Delay from a robots.txt and is used ONLY if 
+   fetcher.threads.per.queue is set to 1.
+   </description>
+</property>
+
+<property>
+  <name>fetcher.server.min.delay</name>
+  <value>1.0</value>
+  <description>The minimum number of seconds the fetcher will delay between 
+  successive requests to the same server. This value is applicable ONLY
+  if fetcher.threads.per.queue is greater than 1 (i.e. the host blocking
+  is turned off).</description>
+</property>
+<property>
+ <name>fetcher.max.crawl.delay</name>
+ <value>10</value>
+ <description>
+ If the Crawl-Delay in robots.txt is set to greater than this value (in
+ seconds) then the fetcher will skip this page, generating an error report.
+ If set to -1 the fetcher will never skip such pages and will wait the
+ amount of time retrieved from robots.txt Crawl-Delay, however long that
+ might be.
+ </description>
+</property>
+<property>
+  <name>http.timeout</name>
+  <value>10000</value>
+  <description>The default network timeout, in milliseconds.</description>
+</property>
+<!--property>
+  <name>generate.max.count</name>
+  <value>10000</value>
+  <description>The maximum number of urls in a single
+  fetchlist.  -1 if unlimited. The urls are counted according
+  to the value of the parameter generator.count.mode.
+  </description>
+</property-->
+</configuration>

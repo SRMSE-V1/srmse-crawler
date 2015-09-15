@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+ <property>
+  <name>mapred.job.tracker</name>
+  <value>192.168.103.24:54311</value>
+  <description>The host and port that the MapReduce job tracker runs
+  at.  If "local", then jobs are run in-process as a single map
+  and reduce task.
+  </description>
+</property>
+<property>
+  <name>mapred.jobtracker.taskScheduler</name>
+  <value>org.apache.hadoop.mapred.FairScheduler</value>
+</property>
+<property>
+    <name>mapred.child.java.opts</name>
+    <value>-Xmx2000m</value>
+</property>
+<property>
+    <name>mapred.tasktracker.map.tasks.maximum</name>
+    <value>4</value>
+</property>
+<property>
+    <name>mapred.tasktracker.reduce.tasks.maximum</name>
+    <value>4</value>
+</property>
+<property>
+    <name>mapred.reduce.tasks</name>
+    <value>4</value>
+</property>
+<property>
+    <name>mapred.map.tasks</name>
+    <value>4</value>
+</property>
+</configuration>
